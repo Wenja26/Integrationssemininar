@@ -1,0 +1,148 @@
+%%**************************************************************
+%% Vorlage fuer Bachelorarbeiten (o.ä.) der DHBW
+%%
+%% Autor: Tobias Dreher, Yves Fischer
+%% Datum: 06.07.2011
+%%
+%% Autor: Michael Gruben
+%% Datum: 15.05.2013
+%%**************************************************************
+
+\input{ads/header}
+
+% Ab jetzt können auch Umlaute verwendet werden
+
+%falls pdftitel = titel der Arbeit
+\newcommand{\titel}{\pdftitel}
+%bei unterschiedlichen Titeln
+%\newcommand{\titel}{I haben wir einen zweizeiligen
+% Bachelorthesistitel}
+\newcommand{\martrikelnr}{2929412}
+\newcommand{\kurs}{WWI12B5}
+\newcommand{\datumAbgabe}{Juli 2015}
+\newcommand{\firma}{SAP SE}
+\newcommand{\firmenort}{Walldorf}
+\newcommand{\abgabeort}{Karlsruhe}
+\newcommand{\abschluss}{Bachelor of Science}
+\newcommand{\studiengang}{Wirtschaftsinformatik}
+\newcommand{\dhbw}{Karlsruhe}
+\newcommand{\betreuer}{Dr. Bernd Limberger}
+\newcommand{\gutachter}{Torsten Rösen}
+\newcommand{\zeitraum}{13.05.2015 bis 01.07.2015}
+\newcommand{\arbeitsart}{\arbeit}
+
+\makeglossaries
+\input{ads/glossary}
+
+\begin{document}
+
+
+
+	% Deckblatt
+	\begin{spacing}{1}
+		\input{ads/deckblatt}
+	\end{spacing}
+	\newpage
+
+	\renewcommand{\thepage}{\Roman{page}}
+	\setcounter{page}{1}
+
+	% Sperrvermerk
+	\input{ads/sperrvermerk}
+	\newpage
+	
+	% Erklärung
+	\input{ads/erklaerung}
+	\newpage
+
+
+	% Abstract
+	%\input{ads/abstract}
+	%\newpage
+
+	\pagestyle{plain}
+
+	% Inhaltsverzeichnis
+	\begin{spacing}{1.1}
+		\setcounter{tocdepth}{2}
+		%für die Anzeige von Unterkapiteln im Inhaltsverzeichnis
+		%\setcounter{tocdepth}{2}
+		\tableofcontents
+	\end{spacing}
+	\newpage
+	
+		% Abkürzungsverzeichnis
+		\cleardoublepage
+		\phantomsection \label{listofacs}
+		\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+		\input{ads/acronyms}
+		
+		
+		% Abbildungsverzeichnis
+		\cleardoublepage
+		\phantomsection \label{listoffig}
+		\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+		\listoffigures
+	
+		%Tabellenverzeichnis
+		\cleardoublepage
+		\phantomsection \label{listoftab}
+		\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+		\listoftables
+
+    \cleardoublepage
+	\renewcommand{\thepage}{\arabic{page}}
+	\setcounter{page}{1}
+	
+	% Inhalt
+     \input{content/01kapitel}
+     \input{content/02kapitel}
+     \input{content/03kapitel}
+     \input{content/04kapitel}
+     \input{content/05kapitel}
+     \input{content/06kapitel}
+     	
+	
+	% Anhang
+	\clearpage
+	\renewcommand{\thepage}{\Roman{page}}
+		\setcounter{page}{8}
+	%\pagenumbering{roman}
+	\appendix
+	\input{content/Anhang}
+	
+
+
+
+	% Quellcodeverzeichnis
+	%\cleardoublepage
+	%\phantomsection \label{listoflist}
+	%\addcontentsline{toc}{chapter}{Listings}
+	%\lstlistoflistings
+
+
+	% Literaturverzeichnis
+	\cleardoublepage
+	\phantomsection \label{listoflit}
+	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+	
+	\nocite{*}
+	%Bib style
+	%\bibliographystyle{agsm} %Havard  
+	%\bibliographystyle{amsplain} %Durchnummeriert
+	%\bibliographystyle{amsalpha} %Kürzel für Autor und Jahr,
+	\bibliographystyle{geralpha} % was Jan verwendet: alpha
+	%see more: http://amath.colorado.edu/documentation/LaTeX/reference/faq/bibstyles.pdf
+	
+  	\bibliography{ArbeitBib}
+     
+   %cd 
+   \cleardoublepage
+   \phantomsection
+   \addcontentsline{toc}{chapter}{Beigabenverzeichnis}
+   \input{content/cd}
+     
+     
+	% Glossar
+	\printglossary[style=altlist,title=Glossar]
+\end{document}
